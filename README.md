@@ -1,6 +1,6 @@
 # Run Through Quake Mod
 
-How quickly are you?
+How quick are you?
 
 ## About the RTQ Mod
 This mod for Quake 2 is fast paced and after every level gives you a score of how the you did. 
