@@ -1323,8 +1323,10 @@ void ClientBegin (edict_t *ent)
 		// ClientConnect() time
 		G_InitEdict (ent);
 		ent->classname = "player";
+		gi.centerprintf(ent, "%d Hello ", ent->client->score);
 		InitClientResp (ent->client);
 		PutClientInServer (ent);
+
 	}
 
 	if (level.intermissiontime)
