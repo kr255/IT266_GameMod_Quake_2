@@ -1325,7 +1325,7 @@ void ClientBegin (edict_t *ent)
 		// ClientConnect() time
 		G_InitEdict (ent);
 		ent->classname = "player";
-		gi.centerprintf(ent, "%d Hello ", ent->monster_score);	// kr, prints out the scores
+		gi.centerprintf(ent, "Total Score %d\n", ent->monster_score);	// kr, prints out the scores
 		SP_monster_berserk(ent);
 		InitClientResp (ent->client);
 		PutClientInServer (ent);

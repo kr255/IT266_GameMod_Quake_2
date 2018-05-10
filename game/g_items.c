@@ -563,7 +563,6 @@ qboolean Pickup_Health (edict_t *ent, edict_t *other)
 		//gi.bprintf(PRINT_MEDIUM, "%d ent->count is \n", ent->count);
 
 		other->health -= other->health /2;
-		
 		if (other->max_health < 50)
 		{
 			//gi.bprintf(PRINT_MEDIUM, "%d other health is \n", other->health);
