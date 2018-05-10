@@ -847,12 +847,21 @@ void Blaster_Fire (edict_t *ent, vec3_t g_offset, int damage, qboolean hyper, in
 void Weapon_Blaster_Fire (edict_t *ent)
 {
 	int		damage;
-
+	//KR Changes to weapon behavior
+	vec3_t behavior;
 	if (deathmatch->value)
 		damage = 15;
 	else
-		damage = 150;
+		damage = 10;
 	Blaster_Fire (ent, vec3_origin, damage, false, EF_BLASTER);
+	//KR Changes to weapon behavior
+	VectorSet(behavior, 0, 4, 0);
+	VectorAdd(behavior, vec3_origin, behavior);
+	Blaster_Fire(ent, behavior, damage, false, EF_BLASTER);
+	
+	VectorSet(behavior, 0, -4, 0);
+	VectorAdd(behavior, vec3_origin, behavior);
+	Blaster_Fire(ent, behavior, damage, false, EF_BLASTER);
 	ent->client->ps.gunframe++;
 }
 

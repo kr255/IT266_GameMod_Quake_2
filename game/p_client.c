@@ -400,6 +400,8 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 	}
 
 	gi.bprintf (PRINT_MEDIUM,"%s died.\n", self->client->pers.netname);
+	
+
 	if (deathmatch->value)
 		self->client->resp.score--;
 }
@@ -1323,7 +1325,8 @@ void ClientBegin (edict_t *ent)
 		// ClientConnect() time
 		G_InitEdict (ent);
 		ent->classname = "player";
-		gi.centerprintf(ent, "%d Hello ", ent->client->score);
+		gi.centerprintf(ent, "%d Hello ", ent->monster_score);	// kr, prints out the scores
+		SP_monster_berserk(ent);
 		InitClientResp (ent->client);
 		PutClientInServer (ent);
 

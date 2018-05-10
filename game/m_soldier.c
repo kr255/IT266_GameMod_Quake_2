@@ -503,7 +503,9 @@ void soldier_fire (edict_t *self, int flash_number)
 
 	if (self->s.skinnum <= 1)
 	{
+
 		monster_fire_blaster (self, start, aim, 5, 600, flash_index, EF_BLASTER);
+		gi.bprintf(PRINT_MEDIUM, "%d health ", self->enemy->health);
 	}
 	else if (self->s.skinnum <= 3)
 	{
@@ -1153,6 +1155,7 @@ void soldier_die (edict_t *self, edict_t *inflictor, edict_t *attacker, int dama
 			ThrowGib (self, "models/objects/gibs/sm_meat/tris.md2", damage, GIB_ORGANIC);
 		ThrowGib (self, "models/objects/gibs/chest/tris.md2", damage, GIB_ORGANIC);
 		ThrowHead (self, "models/objects/gibs/head2/tris.md2", damage, GIB_ORGANIC);
+
 		self->deadflag = DEAD_DEAD;
 		return;
 	}
@@ -1201,6 +1204,7 @@ void SP_monster_soldier_x (edict_t *self)
 {
 
 	self->s.modelindex = gi.modelindex ("models/monsters/soldier/tris.md2");
+	
 	self->monsterinfo.scale = MODEL_SCALE;
 	VectorSet (self->mins, -16, -16, -24);
 	VectorSet (self->maxs, 16, 16, 32);
@@ -1254,6 +1258,8 @@ void SP_monster_soldier_light (edict_t *self)
 	self->s.skinnum = 0;
 	self->health = 20;
 	self->gib_health = -30;
+	self->monster_score = 1;
+
 }
 
 /*QUAKED monster_soldier (1 .5 0) (-16 -16 -24) (16 16 32) Ambush Trigger_Spawn Sight
@@ -1297,3 +1303,4 @@ void SP_monster_soldier_ss (edict_t *self)
 	self->health = 40;
 	self->gib_health = -30;
 }
+

@@ -1059,6 +1059,7 @@ struct edict_s
 	int			deadflag;
 	qboolean	show_hostile;
 
+
 	float		powerarmor_time;
 
 	char		*map;			// target_changelevel
@@ -1111,5 +1112,7 @@ struct edict_s
 	// common data blocks
 	moveinfo_t		moveinfo;
 	monsterinfo_t	monsterinfo;
+
+	int			monster_score;			//KR score variable to hold the score for a monster		
 };
 

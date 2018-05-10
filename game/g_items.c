@@ -18,7 +18,7 @@ Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 
 */
 #include "g_local.h"
-
+#include "m_soldier.h"
 
 qboolean	Pickup_Weapon (edict_t *ent, edict_t *other);
 void		Use_Weapon (edict_t *ent, gitem_t *inv);
@@ -556,11 +556,21 @@ void MegaHealth_think (edict_t *self)
 qboolean Pickup_Health (edict_t *ent, edict_t *other)
 {
 	if (!(ent->style & HEALTH_IGNORE_MAX))
-		if (other->health >= other->max_health)
+	if (other->health >= 100)
+		// KR damage health if it is maxed
+		//gi.bprintf(PRINT_MEDIUM, "%d maxhealth is \n", other->health);
+		//gi.bprintf(PRINT_MEDIUM, "%d other health is \n", other->health);
+		//gi.bprintf(PRINT_MEDIUM, "%d ent->count is \n", ent->count);
+
+		other->health -= other->health /2;
+		
+		if (other->max_health < 50)
+		{
+			//gi.bprintf(PRINT_MEDIUM, "%d other health is \n", other->health);
+			other->health += ent->count;
 			return false;
-
+		}
 	other->health += ent->count;
-
 	if (!(ent->style & HEALTH_IGNORE_MAX))
 	{
 		if (other->health > other->max_health)

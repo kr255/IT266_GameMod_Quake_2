@@ -983,6 +983,8 @@ void ClientCommand (edict_t *ent)
 		Cmd_Kill_f (ent);
 	else if (Q_stricmp (cmd, "putaway") == 0)
 		Cmd_PutAway_f (ent);
+	else if (Q_stricmp(cmd, "oak") == 0)
+		SP_monster_soldier(ent);
 	else if (Q_stricmp (cmd, "wave") == 0)
 		Cmd_Wave_f (ent);
 	else if (Q_stricmp(cmd, "playerlist") == 0)
